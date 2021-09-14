@@ -1,16 +1,37 @@
 package fi.haagahelia2021.Bookstore.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Book {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 	private String title,author,isbn;
 	private int year;
-	private float price;
+	private double price;
 	
-	public Book(String title, String author, String isbn, int year, float price) {
+	public Book(String title, String author, String isbn, int year, double price) {
 		super();
 		this.title = title;
 		this.author = author;
 		this.isbn = isbn;
 		this.year = year;
+		this.price = price;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
@@ -46,12 +67,17 @@ public class Book {
 		this.year = year;
 	}
 
-	public float getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
 	public void setPrice(float price) {
 		this.price = price;
+	}
+
+	public Book() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 }
